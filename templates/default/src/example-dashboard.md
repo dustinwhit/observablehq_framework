@@ -26,6 +26,7 @@ const color = Plot.scale({
 
 <!-- Cards with big numbers -->
 
+<!-- This grid automatically collapses to fewer columns on narrow screens -->
 <div class="grid grid-cols-4">
   <div class="card">
     <h2>United States 🇺🇸</h2>
@@ -65,6 +66,7 @@ function launchTimeline(data, {width} = {}) {
 
 <div class="grid grid-cols-1">
   <div class="card">
+    <!-- Render the chart responsively based on the container width -->
     ${resize((width) => launchTimeline(launches, {width}))}
   </div>
 </div>
@@ -92,6 +94,7 @@ function vehicleChart(data, {width}) {
 
 <div class="grid grid-cols-1">
   <div class="card">
+    <!-- Responsive rendering of the vehicle chart -->
     ${resize((width) => vehicleChart(launches, {width}))}
   </div>
 </div>

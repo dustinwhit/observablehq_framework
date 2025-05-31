@@ -25,6 +25,8 @@ npx @observablehq/framework gui
 
 By default this opens <http://127.0.0.1:3001/>.
 
+Framework ships with a responsive grid layout and `resize` helpers so your dashboards adapt gracefully to mobile screens. Nested grids now act as their own containers, allowing complex layouts to shrink smoothly on phones and tablets.
+
 ## Examples 🖼️
 
 https://github.com/observablehq/framework/tree/main/examples

@@ -452,7 +452,7 @@ For example, here’s a two-column grid with three cards:
 </div>
 ```
 
-<div class="note">Framework’s grid is responsive: on narrow windows, the two-column grid will automatically collapse to a one-column grid. Cells in a grid have the same height by default (using <code>grid-auto-rows</code>), so consider separate <code>&lt;div class="grid"&gt;</code> containers if you want to vary row height.</div>
+<div class="note">Framework’s grid is responsive: on narrow windows, the two-column grid will automatically collapse to a one-column grid. Cells in a grid have the same height by default (using <code>grid-auto-rows</code>), so consider separate <code>&lt;div class="grid"&gt;</code> containers if you want to vary row height. Each grid is its own <code>container</code> for media queries, allowing nested grids to adapt to available space on phones and tablets.</div>
 
 When placing charts in a grid, you typically want to render responsively based on the width (and sometimes height) of the containing cell. Framework’s `resize` helper takes a render function returning a DOM element and re-renders whenever the container resizes. It looks like this:
 
