@@ -15,6 +15,16 @@
 
 https://observablehq.com/framework/
 
+## Installation & usage 🛠️
+
+Start the optional GUI editor with:
+
+```sh
+npx @observablehq/framework gui
+```
+
+By default this opens <http://127.0.0.1:3001/>.
+
 ## Examples 🖼️
 
 https://github.com/observablehq/framework/tree/main/examples

@@ -142,9 +142,16 @@ To start the preview server using npm:
 
 <pre data-copy>npm run dev</pre>
 
+
 Or with Yarn:
 
 <pre data-copy>yarn dev</pre>
+
+You can also launch the lightweight GUI editor:
+
+<pre data-copy>npx @observablehq/framework gui</pre>
+
+This opens <http://127.0.0.1:3001/> by default.
 
 You should see something like this:
 
