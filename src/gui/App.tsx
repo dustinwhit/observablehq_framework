@@ -6,6 +6,15 @@ export default function App() {
   const chartRef = useRef<HTMLDivElement>(null);
   const [dataset, setDataset] = useState("aapl");
   const [chartType, setChartType] = useState("line");
+  const [message, setMessage] = useState("");
+
+  async function trigger(path: string) {
+    const res = await fetch(path, {method: "POST"});
+    setMessage(await res.text());
+  }
+
+  const handleBuild = () => trigger("/api/build");
+  const handlePreview = () => trigger("/api/preview");
 
   useEffect(() => {
     if (!chartRef.current) return;
@@ -44,8 +53,15 @@ export default function App() {
             <option value="scatter">Scatter</option>
           </select>
         </label>
+        <button style={{marginLeft: "1rem"}} onClick={handleBuild}>
+          Build
+        </button>
+        <button style={{marginLeft: "0.5rem"}} onClick={handlePreview}>
+          Preview
+        </button>
       </div>
       <div ref={chartRef} />
+      {message && <p>{message}</p>}
     </div>
   );
 }
