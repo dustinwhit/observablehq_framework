@@ -78,6 +78,7 @@ try {
         `usage: observable <command>
   create       create a new app from a template
   preview      start the preview server
+  gui          start the GUI editor
   build        generate a static site
   login        sign-in to Observable
   logout       sign-out of Observable
@@ -190,6 +191,36 @@ try {
           hostname: host!,
           port: port === undefined ? undefined : +port,
           origins: cors ? ["*"] : origins,
+          open
+        })
+      );
+      break;
+    }
+    case "gui": {
+      const {values} = helpArgs(command, {
+        options: {
+          host: {
+            type: "string",
+            default: "127.0.0.1",
+            description: "the server host; use 0.0.0.0 to accept external connections"
+          },
+          port: {
+            type: "string",
+            description: "the server port; defaults to 3001 (or higher if unavailable)"
+          },
+          open: {
+            type: "boolean",
+            default: true,
+            description: "open browser"
+          },
+          "no-open": {type: "boolean"}
+        }
+      });
+      const {host, port, open} = values;
+      await import("../gui/server.js").then(async (gui) =>
+        gui.startGuiServer({
+          hostname: host!,
+          port: port === undefined ? undefined : +port,
           open
         })
       );
