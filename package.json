@@ -13,7 +13,8 @@
   "files": [
     "dist/**/*.js",
     "dist/**/*.css",
-    "templates"
+    "templates",
+    "samples"
   ],
   "bin": {
     "observable": "dist/bin/observable.js"

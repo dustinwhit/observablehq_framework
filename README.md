@@ -25,6 +25,14 @@ npx @observablehq/framework gui
 
 By default this opens <http://127.0.0.1:3001/>.
 
+To explore the included sample datasets and a starter notebook, run:
+
+```sh
+npx @observablehq/framework samples
+```
+
+This copies the bundled files into a local `samples/` directory so you can preview them immediately.
+
 ## Examples 🖼️
 
 https://github.com/observablehq/framework/tree/main/examples

@@ -67,7 +67,7 @@ else if (values.help) {
 
 /** Commands that use Clack formatting. When handling CliErrors, clack.outro()
  * will be used for these commands. */
-const CLACKIFIED_COMMANDS = ["create", "deploy", "login", "convert"];
+const CLACKIFIED_COMMANDS = ["create", "deploy", "login", "convert", "samples"];
 
 try {
   switch (command) {
@@ -85,6 +85,7 @@ try {
   deploy       deploy an app to Observable [deprecated]
   whoami       check authentication status
   convert      convert an Observable notebook to Markdown
+  samples      copy bundled sample datasets and notebooks
   help         print usage information
   version      print the version`
       );
@@ -108,6 +109,15 @@ try {
     case "create": {
       helpArgs(command, {});
       await import("../create.js").then(async (create) => create.create());
+      break;
+    }
+    case "samples": {
+      const {values} = helpArgs(command, {
+        options: {
+          dest: {type: "string", default: "samples", description: "output directory"}
+        }
+      });
+      await import("../samples.js").then(async (samples) => samples.copySamples(values.dest));
       break;
     }
     case "deploy": {
