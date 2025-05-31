@@ -12,8 +12,12 @@ const {values, positionals} = parseArgs({
   }
 });
 
+const patterns = positionals.length
+  ? positionals
+  : ["src/**/*.{ts,tsx,js,jsx,css}"]; // default pattern
+
 await build({
-  entryPoints: await glob(positionals, {ignore: values.ignore}),
+  entryPoints: await glob(patterns, {ignore: values.ignore}),
   define: {"process.env.npm_package_version": `"${process.env.npm_package_version}"`},
   outdir: values.outdir,
   outbase: values.outbase,
