@@ -1,30 +1,27 @@
 import React, {useEffect, useRef, useState} from "npm:react";
-import {Runtime, Inspector} from "npm:@observablehq/runtime";
-import * as Plot from "npm:@observablehq/plot";
 
 export default function App() {
   const chartRef = useRef<HTMLDivElement>(null);
   const [dataset, setDataset] = useState("aapl");
-  const [chartType, setChartType] = useState("line");
 
   useEffect(() => {
     if (!chartRef.current) return;
-    const runtime = new Runtime();
-    const main = runtime.module();
 
-    main.variable().define("data", dataset === "aapl" ? aapl : cars);
-    main.variable().define("chartType", chartType);
-    main
-      .variable(Inspector.into(chartRef.current))
-      .define("chart", ["data", "chartType"], (data: any[], chartType: string) => {
-        if (chartType === "line") {
-          return Plot.plot({marks: [Plot.line(data, {x: "date", y: "close"})]});
-        }
-        return Plot.plot({marks: [Plot.dot(data, {x: "horsepower", y: "weight"})]});
-      });
+    let aborted = false;
 
-    return () => runtime.dispose();
-  }, [dataset, chartType]);
+    (async () => {
+      const {default: ChartCell} = await import("observablehq:stdlib/chartcell");
+      const data = dataset === "aapl" ? aapl : cars;
+      const element = await ChartCell(data);
+      if (!aborted && chartRef.current) {
+        chartRef.current.replaceChildren(element);
+      }
+    })();
+
+    return () => {
+      aborted = true;
+    };
+  }, [dataset]);
 
   return (
     <div>
@@ -35,13 +32,6 @@ export default function App() {
           <select value={dataset} onChange={(e) => setDataset(e.target.value)}>
             <option value="aapl">AAPL Prices</option>
             <option value="cars">Cars</option>
-          </select>
-        </label>
-        <label style={{marginLeft: "1rem"}}>
-          Chart Type:
-          <select value={chartType} onChange={(e) => setChartType(e.target.value)}>
-            <option value="line">Line</option>
-            <option value="scatter">Scatter</option>
           </select>
         </label>
       </div>
