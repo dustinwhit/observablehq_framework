@@ -60,7 +60,9 @@ export const builtins = new Map<string, string>([
   ["npm:@observablehq/inputs", "/_observablehq/stdlib/inputs.js"], // TODO publish to npm
   ["npm:@observablehq/mermaid", "/_observablehq/stdlib/mermaid.js"], // TODO publish to npm
   ["npm:@observablehq/tex", "/_observablehq/stdlib/tex.js"], // TODO publish to npm
-  ["npm:@observablehq/sqlite", "/_observablehq/stdlib/sqlite.js"] // TODO publish to npm
+  ["npm:@observablehq/sqlite", "/_observablehq/stdlib/sqlite.js"], // TODO publish to npm
+  ["observablehq:stdlib/remote-db", "/_observablehq/stdlib/remote-db.js"],
+  ["npm:@observablehq/remote-db", "/_observablehq/stdlib/remote-db.js"]
 ]);
 
 /**

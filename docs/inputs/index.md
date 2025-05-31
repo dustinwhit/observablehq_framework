@@ -126,5 +126,6 @@ For more, see the individual input pages:
 - [Date](./date) or [Datetime](./date) - choose a date
 - [Color](./color) - choose a color
 - [File](./file) - choose a local file
+- [Dropzone](./dropzone) - drag-and-drop file upload
 - [Search](./search) - query a tabular dataset
 - [Table](./table) - browse a tabular dataset

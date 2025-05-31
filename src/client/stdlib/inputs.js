@@ -58,3 +58,43 @@ class LocalFile extends AbstractFile {
     return this._.stream();
   }
 }
+
+export function dropzone(options = {}) {
+  const zone = document.createElement("div");
+  zone.className = "__ns__-dropzone";
+  zone.textContent = options.label ?? "Drop file";
+  const input = file(options);
+  input.style.display = "none";
+  zone.appendChild(input);
+  let value = null;
+
+  function setFiles(files) {
+    if (!files || files.length === 0) return;
+    value = options.multiple
+      ? Array.from(files, (f) => new LocalFile(f))
+      : new LocalFile(files[0]);
+    zone.dispatchEvent(new Event("input", {bubbles: true}));
+  }
+
+  input.addEventListener("input", () => {
+    value = input.value;
+    zone.dispatchEvent(new Event("input", {bubbles: true}));
+  });
+
+  zone.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    zone.classList.add("__over");
+  });
+
+  zone.addEventListener("dragleave", () => zone.classList.remove("__over"));
+  zone.addEventListener("drop", (event) => {
+    event.preventDefault();
+    zone.classList.remove("__over");
+    setFiles(event.dataTransfer?.files);
+  });
+
+  zone.addEventListener("click", () => input.click());
+
+  Object.defineProperty(zone, "value", {get: () => value});
+  return zone;
+}

@@ -280,3 +280,15 @@ form.__ns__-table {
 .__ns__-table tbody tr:first-child td {
   padding-top: 4px;
 }
+
+/* Drag-and-drop file input */
+.__ns__-dropzone {
+  border: 2px dashed var(--theme-foreground);
+  padding: var(--length3);
+  text-align: center;
+  cursor: pointer;
+}
+
+.__ns__-dropzone.__over {
+  background: var(--theme-background-alt);
+}
