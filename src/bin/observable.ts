@@ -67,7 +67,7 @@ else if (values.help) {
 
 /** Commands that use Clack formatting. When handling CliErrors, clack.outro()
  * will be used for these commands. */
-const CLACKIFIED_COMMANDS = ["create", "deploy", "login", "convert"];
+const CLACKIFIED_COMMANDS = ["create", "deploy", "login", "convert", "transform"];
 
 try {
   switch (command) {
@@ -85,6 +85,7 @@ try {
   deploy       deploy an app to Observable [deprecated]
   whoami       check authentication status
   convert      convert an Observable notebook to Markdown
+  transform    interactively transform tabular data
   help         print usage information
   version      print the version`
       );
@@ -265,6 +266,26 @@ try {
       // config option (typically "src") is relative to the project root.
       const output = out ?? join(root ?? ".", (await readConfig(config, root)).root);
       await import("../convert.js").then((convert) => convert.convert(positionals, {output, force}));
+      break;
+    }
+    case "transform": {
+      const {
+        positionals: [source],
+        values: {output}
+      } = helpArgs(command, {
+        options: {
+          output: {
+            type: "string",
+            short: "o",
+            description: "Output file"
+          }
+        },
+        allowPositionals: true
+      });
+      if (!source) {
+        throw new CliError("missing source file");
+      }
+      await import("../transform.js").then((t) => t.transform({source, output}));
       break;
     }
     default: {
