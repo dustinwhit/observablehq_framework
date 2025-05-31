@@ -25,6 +25,12 @@ npx @observablehq/framework gui
 
 By default this opens <http://127.0.0.1:3001/>.
 
+To run the GUI as a desktop app, build and launch Electron:
+```sh
+yarn desktop
+```
+This bundles the Observable runtime so the editor works offline.
+
 ## Examples 🖼️
 
 https://github.com/observablehq/framework/tree/main/examples

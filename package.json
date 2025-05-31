@@ -34,7 +34,8 @@
     "test:prettier": "prettier --check src test",
     "test:tsc": "tsc --noEmit",
     "observable": "tsx --no-warnings=ExperimentalWarning ./src/bin/observable.ts",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "desktop": "yarn build && electron dist/electron.js"
   },
   "c8": {
     "all": true,
@@ -134,7 +135,8 @@
     "rimraf": "^5.0.5",
     "tempy": "^3.1.0",
     "typescript": "^5.2.2 <5.6.0",
-    "undici": "^6.7.1"
+    "undici": "^6.7.1",
+    "electron": "^30.0.0"
   },
   "engines": {
     "node": ">=18"
