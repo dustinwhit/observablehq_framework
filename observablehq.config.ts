@@ -21,6 +21,7 @@ export default {
     {name: "Getting started", path: "/getting-started"},
     {name: "Deploying", path: "/deploying"},
     {name: "Embedding", path: "/embeds"},
+    {name: "Interactive controls", path: "/interactive-controls"},
     {
       name: "Reference",
       open: false,

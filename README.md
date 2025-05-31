@@ -25,6 +25,12 @@ npx @observablehq/framework gui
 
 By default this opens <http://127.0.0.1:3001/>.
 
+## Interactive controls
+
+Framework includes [Observable Inputs](docs/inputs/) for no-code UI. Sliders,
+dropdowns and other widgets let readers filter data interactively. See the
+[Interactive controls](docs/interactive-controls.md) guide for an example.
+
 ## Examples 🖼️
 
 https://github.com/observablehq/framework/tree/main/examples
