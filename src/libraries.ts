@@ -33,6 +33,7 @@ export function getImplicitInputImports(inputs: Iterable<string>): Set<string> {
   if (set.has("mermaid")) implicits.add("npm:@observablehq/mermaid");
   if (set.has("Plot")) implicits.add("npm:@observablehq/plot");
   if (set.has("SQLite") || set.has("SQLiteDatabaseClient")) implicits.add("npm:@observablehq/sqlite");
+  if (set.has("RemoteDatabaseClient")) implicits.add("observablehq:stdlib/remote-db");
   if (set.has("tex")) implicits.add("npm:@observablehq/tex");
   if (set.has("topojson")) implicits.add("npm:topojson-client");
   if (set.has("vl")) implicits.add("observablehq:stdlib/vega-lite");
