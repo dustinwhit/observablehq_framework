@@ -1,13 +1,19 @@
 const files = new Map();
 
+function dispatchFileUpdate(name) {
+  globalThis.dispatchEvent(new CustomEvent("observablehq:fileupdate", {detail: name}));
+}
+
 export function registerFile(name, info, base = location) {
   const href = new URL(name, base).href;
   if (info == null) {
     files.delete(href);
+    dispatchFileUpdate(href);
   } else {
     const {path, mimeType, lastModified, size} = info;
     const file = new FileAttachmentImpl(new URL(path, base).href, name.split("/").pop(), mimeType, lastModified, size);
     files.set(href, file);
+    dispatchFileUpdate(href);
     return file;
   }
 }

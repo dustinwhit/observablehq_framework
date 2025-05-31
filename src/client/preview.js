@@ -5,6 +5,8 @@ import {enableCopyButtons} from "./pre.js";
 
 export * from "./index.js";
 
+globalThis.addEventListener("observablehq:fileupdate", () => runtime._compute());
+
 let minReopenDelay = 1000;
 let maxReopenDelay = 30000;
 let reopenDelay = minReopenDelay;
