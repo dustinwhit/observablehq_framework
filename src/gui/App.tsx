@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "npm:react";
 import {Runtime, Inspector} from "npm:@observablehq/runtime";
 import * as Plot from "npm:@observablehq/plot";
+import "./app.css";
 
 export default function App() {
   const chartRef = useRef<HTMLDivElement>(null);
@@ -27,9 +28,9 @@ export default function App() {
   }, [dataset, chartType]);
 
   return (
-    <div>
+    <div id="root">
       <h1>Observable GUI</h1>
-      <div style={{marginBottom: "1rem"}}>
+      <div className="controls">
         <label>
           Dataset:
           <select value={dataset} onChange={(e) => setDataset(e.target.value)}>
@@ -37,7 +38,7 @@ export default function App() {
             <option value="cars">Cars</option>
           </select>
         </label>
-        <label style={{marginLeft: "1rem"}}>
+        <label>
           Chart Type:
           <select value={chartType} onChange={(e) => setChartType(e.target.value)}>
             <option value="line">Line</option>
@@ -45,7 +46,7 @@ export default function App() {
           </select>
         </label>
       </div>
-      <div ref={chartRef} />
+      <div ref={chartRef} className="chart" />
     </div>
   );
 }

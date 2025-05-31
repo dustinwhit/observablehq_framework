@@ -25,7 +25,13 @@ Start the optional GUI editor with:
 npx @observablehq/framework gui
 ```
 
-By default this opens <http://127.0.0.1:3001/>.
+By default this opens <http://127.0.0.1:3001/>. The interface is responsive, so it adapts to mobile and desktop screens.
+
+To run the GUI as a desktop application, use:
+
+```sh
+npm run desktop
+```
 
 To explore the included sample datasets and a starter notebook, run:
 

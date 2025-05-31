@@ -153,6 +153,10 @@ You can also launch the lightweight GUI editor:
 
 This opens <http://127.0.0.1:3001/> by default.
 
+The interface is responsive, so it works well on phones, tablets, and desktops. You can also package the GUI as an offline desktop app using Electron:
+
+<pre data-copy>npm run desktop</pre>
+
 You should see something like this:
 
 <pre data-copy="none"><b class="green">Observable Framework</b> v1.13.3
