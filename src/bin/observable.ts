@@ -221,7 +221,7 @@ try {
         gui.startGuiServer({
           hostname: host!,
           port: port === undefined ? undefined : +port,
-          open
+          openBrowser: open
         })
       );
       break;

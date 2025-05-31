@@ -1,5 +1,5 @@
 import {createServer} from "node:http";
-import {dirname, join} from "node:path/posix";
+import {dirname} from "node:path/posix";
 import {fileURLToPath} from "node:url";
 import open from "open";
 import send from "send";
@@ -8,10 +8,10 @@ import {isSystemError} from "../error.js";
 export interface GuiOptions {
   hostname: string;
   port?: number;
-  open?: boolean;
+  openBrowser?: boolean;
 }
 
-export async function startGuiServer({hostname, port, open = true}: GuiOptions) {
+export async function startGuiServer({hostname, port, openBrowser = true}: GuiOptions) {
   const root = dirname(fileURLToPath(import.meta.url));
   const server = createServer((req, res) => {
     let pathname = req.url === "/" ? "/index.html" : req.url!;
@@ -37,6 +37,6 @@ export async function startGuiServer({hostname, port, open = true}: GuiOptions) 
   }
   const url = `http://${hostname}:${port}/`;
   console.log(`Observable GUI running at ${url}`);
-  if (open) open(url);
+  if (openBrowser) open(url);
   return server;
 }
