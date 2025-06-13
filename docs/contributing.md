@@ -1,11 +1,11 @@
 # Contributing
 
-If you’d like to contribute to Observable Framework, here’s how. First clone the [git repo](https://github.com/observablehq/framework) and run [Yarn Classic](https://classic.yarnpkg.com/lang/en/docs/install/) to install dependencies:
+If you’d like to contribute to Observable Framework, here’s how. First clone the [git repo](https://github.com/observablehq/framework) and run the provided setup script to install dependencies:
 
 ```sh
 git clone git@github.com:observablehq/framework.git
 cd framework
-yarn
+./setup.sh
 ```
 
 Next start the local preview server:

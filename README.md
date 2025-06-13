@@ -35,6 +35,16 @@ npx @observablehq/framework samples
 
 This copies the bundled files into a local `samples/` directory so you can preview them immediately.
 
+## Development setup
+
+To install dependencies for local development, run the included setup script. It
+verifies that Node.js and Yarn are available and then installs all packages via
+Yarn:
+
+```sh
+./setup.sh
+```
+
 ## Examples 🖼️
 
 https://github.com/observablehq/framework/tree/main/examples
